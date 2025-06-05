@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: streamlit-app
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run llama.py --server.port=$PORT --server.enableCORS=false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+      - key: llama_key
+        sync: false  # You still need to set this manually in the Render dashboard
